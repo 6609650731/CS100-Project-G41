@@ -1,31 +1,46 @@
-		body {
-			background-color: #5a5a5a;
-            background:radial-gradient(circle, rgba(30,32,34,1) 30%, rgba(82,97,107,1) 100%);;
+		body 
+		{
+			background-image: url(../photo/fwpp5.JPG);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
 			font-family: Verdana;
 			text-align: center;
 		}
 
+		h1
+		{
+			color: white;
+			filter: drop-shadow(10px 5px 5px #fff);
+			text-align: center;
+		}
+
 		/* Styling the Form (Color, Padding, Shadow) */
-		form {
-			background-color: #fff;
+		form 
+		{
+			background-color: rgba(207, 207, 207, 0.425);
 			max-width: 500px;
 			margin: 50px auto;
 			padding: 30px 20px;
-			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+			border-radius: 0.25rem;
+			filter:drop-shadow(10px 5px 5px #fff);
 		}
 
-        small {
+        small 
+		{
             font-size: 12px;
-            color: #5a5a5a;
+            color: black;
         }
 		/* Styling form-control Class */
-		.form-control {
+		.form-control 
+		{
 			text-align: left;
 			margin-bottom: 25px;
 		}
 
 		/* Styling form-control Label */ 
-		.form-control label {
+		.form-control label 
+		{
 			display: block;
 			margin-bottom: 10px;
 		}
@@ -34,9 +49,10 @@
 		select, textarea */
 		.form-control input,
 		.form-control select,
-		.form-control textarea {
+		.form-control textarea 
+		{
 			border: 1px solid #777;
-			border-radius: 2px;
+			border-radius: 0.25rem;
 			font-family: inherit;
 			padding: 10px;
 			display: block;
@@ -46,54 +62,39 @@
 		/* Styling form-control Radio 
 		button and Checkbox */
 		.form-control input[type="radio"],
-		.form-control input[type="checkbox"] {
+		.form-control input[type="checkbox"] 
+		{
 			display: inline-block;
 			width: auto;
 		}
 
 		/* Styling Button */
-		button {
-			background-color: #b3b3b3;
-			border: 1px solid #777;
-			border-radius: 2px;
+		button 
+		{
+			border: 1px solid rgb(208, 208, 208);
+			border-radius: 0.25rem;
 			font-family: inherit;
 			font-size: 21px;
 			display: block;
 			width: 100%;
 			margin-top: 50px;
 			margin-bottom: 20px;
+			cursor: pointer;
 		}
-		
-		@media (width > 650px) and (width < 900px) {
-			.content {
-			  & .title        { font-size: 1rem; }
-			  & .description  { font-size: 0.7rem; }
-			  & button        { font-size: 0.7rem; }
-			}
-			.item {
-			  width: 160px;
-			  height: 270px;
-		  
-			  &:nth-child(3) { left: 50%; }
-			  &:nth-child(4) { left: calc(50% + 170px); }
-			  &:nth-child(5) { left: calc(50% + 340px); }
-			  &:nth-child(6) { left: calc(50% + 510px); opacity: 0; }
-			}
-		  }
-		  
-		  @media (width < 650px) {
-			.content {
-			  & .title        { font-size: 0.9rem; }
-			  & .description  { font-size: 0.65rem; }
-			  & button        { font-size: 0.7rem; }
-			}
-			.item {
-			  width: 130px;
-			  height: 220px;
-		  
-			  &:nth-child(3) { left: 50%; }
-			  &:nth-child(4) { left: calc(50% + 140px); }
-			  &:nth-child(5) { left: calc(50% + 280px); }
-			  &:nth-child(6) { left: calc(50% + 420px); opacity: 0; }
-			}
+		button:hover
+		{
+			background-color: black;
+			color: #fff;
 		}
+
+		@media (width > 650px) and (width < 900px) 
+		{
+			
+  		}
+
+		@media (width < 650px) 
+		{
+
+  		}
+
+	
