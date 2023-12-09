@@ -92,7 +92,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // Function to submit the form
-// Function to submit the form
 async function submitForm(event) {
   event.preventDefault();
 
@@ -173,3 +172,48 @@ document
   .getElementById("studentID")
   .addEventListener("input", validateStudentID);
 document.getElementById("email").addEventListener("input", validateEmail);
+
+// Event listener for location input validation on user input
+document.getElementById("location").addEventListener("input", validateLocation);
+document.addEventListener('DOMContentLoaded', function () {
+document.getElementById('resetButton').addEventListener('click', function () {
+    document.getElementById('myForm').reset();
+});
+
+});
+
+//submit
+document.addEventListener('DOMContentLoaded', function () {
+const form = document.getElementById('myForm');
+form.addEventListener('Submit', function (e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Fetch all the form data
+    const formData = new FormData(form);
+    const values = {};
+    for (const [key, value] of formData.entries()) {
+        values[key] = value;
+    }
+
+    // Display the values
+    displayValues(values, 'custom-output');
+    });
+    function displayValues(data) {
+      const container = document.createElement('div');
+      container.className = 'custom-output';
+  
+      const heading = document.createElement('h2');
+      heading.textContent = '˙ᘧ ͜ ˙ ♡ This is my activity ˙ᘧ ͜ ˙ ♡';
+      heading.className = 'activity-heading';
+      container.appendChild(heading);
+  
+      for (const key in data) {
+          const p = document.createElement('p');
+          p.textContent = `${key}: ${data[key]}`;
+          container.appendChild(p);
+      }
+
+      const formContainer = document.querySelector('.form-container');
+      formContainer.appendChild(container);
+  }
+})
