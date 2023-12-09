@@ -15,7 +15,6 @@
 			text-align: center;
 		}
 
-		/* Styling the Form (Color, Padding, Shadow) */
 		form 
 		{
 			background-color: rgba(207, 207, 207, 0.425);
@@ -31,22 +30,19 @@
             font-size: 12px;
             color: black;
         }
-		/* Styling form-control Class */
+		
 		.form-control 
 		{
 			text-align: left;
 			margin-bottom: 25px;
 		}
 
-		/* Styling form-control Label */ 
 		.form-control label 
 		{
 			display: block;
 			margin-bottom: 10px;
 		}
 
-		/* Styling form-control input, 
-		select, textarea */
 		.form-control input,
 		.form-control select,
 		.form-control textarea 
@@ -59,8 +55,6 @@
 			width: 95%;
 		}
 
-		/* Styling form-control Radio 
-		button and Checkbox */
 		.form-control input[type="radio"],
 		.form-control input[type="checkbox"] 
 		{
@@ -68,7 +62,6 @@
 			width: auto;
 		}
 
-		/* Styling Button */
 		button 
 		{
 			border: 1px solid rgb(208, 208, 208);
