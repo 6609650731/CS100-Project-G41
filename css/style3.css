@@ -1,93 +1,99 @@
-		body 
-		{
-			background-image: url(../photo/fwpp5.JPG);
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: cover;
-			font-family: Verdana;
-			text-align: center;
-		}
+body 
+{
+	background-image: url(../photo/fwpp5.JPG);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	font-family: Verdana;
+	text-align: center;
+}
 
-		h1
-		{
-			color: white;
-			filter: drop-shadow(10px 5px 5px #fff);
-			text-align: center;
-		}
+h1
+{
+	color: white;
+	filter: drop-shadow(10px 5px 5px #fff);
+	text-align: center;
+}
 
-		form 
-		{
-			background-color: rgba(207, 207, 207, 0.425);
-			max-width: 500px;
-			margin: 50px auto;
-			padding: 30px 20px;
-			border-radius: 0.25rem;
-			filter:drop-shadow(10px 5px 5px #fff);
-		}
+form 
+{
+	background-color: rgba(207, 207, 207, 0.425);
+	max-width: 500px;
+	margin: 50px auto;
+	padding: 30px 20px;
+	border-radius: 0.25rem;
+	filter:drop-shadow(10px 5px 5px #fff);
+}
 
-        small 
-		{
-            font-size: 12px;
-            color: black;
-        }
-		
-		.form-control 
-		{
-			text-align: left;
-			margin-bottom: 25px;
-		}
+small 
+{
+	font-size: 12px;
+	color: black;
+}
 
-		.form-control label 
-		{
-			display: block;
-			margin-bottom: 10px;
-		}
+.form-group 
+{
+	text-align: left;
+	margin-bottom: 25px;
+}
 
-		.form-control input,
-		.form-control select,
-		.form-control textarea 
-		{
-			border: 1px solid #777;
-			border-radius: 0.25rem;
-			font-family: inherit;
-			padding: 10px;
-			display: block;
-			width: 95%;
-		}
+.form-group label 
+{
+	display: block;
+	margin-bottom: 10px;
+}
 
-		.form-control input[type="radio"],
-		.form-control input[type="checkbox"] 
-		{
-			display: inline-block;
-			width: auto;
-		}
+.form-group input,
+.form-group select,
+.form-group textarea 
+{
+	border: 1px solid #777;
+	border-radius: 0.25rem;
+	font-family: inherit;
+	padding: 10px;
+	display: block;
+	width: 95%;
+}
 
-		button 
-		{
-			border: 1px solid rgb(208, 208, 208);
-			border-radius: 0.25rem;
-			font-family: inherit;
-			font-size: 21px;
-			display: block;
-			width: 100%;
-			margin-top: 50px;
-			margin-bottom: 20px;
-			cursor: pointer;
-		}
-		button:hover
-		{
-			background-color: black;
-			color: #fff;
-		}
+/* Styling form-control Radio 
+button and Checkbox */
+.form-container input[type="radio"],
+.form-container input[type="checkbox"] 
+{
+	display: inline-block;
+	width: auto;
+}
 
-		@media (width > 650px) and (width < 900px) 
-		{
-			
-  		}
+button 
+{
+	border: 1px solid rgb(208, 208, 208);
+	border-radius: 0.25rem;
+	font-family: inherit;
+	font-size: 21px;
+	display: block;
+	width: 100%;
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
 
-		@media (width < 650px) 
-		{
+.error 
+{
+	font: 1em sans-serif;
+	font-size: 14px;
+	color: red;
+	display: block;
+	margin-top: 5px;
+}
 
-  		}
-
-	
+.form-group input[type="submit"] 
+{
+	padding: 10px 15px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.form-group :hover[type="submit"]
+{
+	background-color: black;
+	color: #fff;
+}
