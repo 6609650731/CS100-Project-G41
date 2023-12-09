@@ -1,3 +1,5 @@
+/* Styling the Body element i.e. Color, 
+		Font, Alignment */ 
 		body {
 			background-color: #5a5a5a;
             background:radial-gradient(circle, rgba(30,32,34,1) 30%, rgba(82,97,107,1) 100%);;
@@ -19,22 +21,22 @@
             color: #5a5a5a;
         }
 		/* Styling form-control Class */
-		.form-control {
+		.form-group {
 			text-align: left;
 			margin-bottom: 25px;
 		}
 
 		/* Styling form-control Label */ 
-		.form-control label {
+		.form-group label {
 			display: block;
 			margin-bottom: 10px;
 		}
 
 		/* Styling form-control input, 
 		select, textarea */
-		.form-control input,
-		.form-control select,
-		.form-control textarea {
+		.form-group input,
+		.form-group select,
+		.form-group textarea {
 			border: 1px solid #777;
 			border-radius: 2px;
 			font-family: inherit;
@@ -45,8 +47,8 @@
 
 		/* Styling form-control Radio 
 		button and Checkbox */
-		.form-control input[type="radio"],
-		.form-control input[type="checkbox"] {
+		.form-container input[type="radio"],
+		.form-container input[type="checkbox"] {
 			display: inline-block;
 			width: auto;
 		}
@@ -63,37 +65,11 @@
 			margin-top: 50px;
 			margin-bottom: 20px;
 		}
-		
-		@media (width > 650px) and (width < 900px) {
-			.content {
-			  & .title        { font-size: 1rem; }
-			  & .description  { font-size: 0.7rem; }
-			  & button        { font-size: 0.7rem; }
-			}
-			.item {
-			  width: 160px;
-			  height: 270px;
-		  
-			  &:nth-child(3) { left: 50%; }
-			  &:nth-child(4) { left: calc(50% + 170px); }
-			  &:nth-child(5) { left: calc(50% + 340px); }
-			  &:nth-child(6) { left: calc(50% + 510px); opacity: 0; }
-			}
+
+		.error {
+			font: 1em sans-serif;
+			font-size: 14px;
+			color: red;
+			display: block;
+			margin-top: 5px;
 		  }
-		  
-		  @media (width < 650px) {
-			.content {
-			  & .title        { font-size: 0.9rem; }
-			  & .description  { font-size: 0.65rem; }
-			  & button        { font-size: 0.7rem; }
-			}
-			.item {
-			  width: 130px;
-			  height: 220px;
-		  
-			  &:nth-child(3) { left: 50%; }
-			  &:nth-child(4) { left: calc(50% + 140px); }
-			  &:nth-child(5) { left: calc(50% + 280px); }
-			  &:nth-child(6) { left: calc(50% + 420px); opacity: 0; }
-			}
-		}
