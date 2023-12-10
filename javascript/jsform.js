@@ -9,7 +9,7 @@ function validateName() {
   const names = fullnameInput.value.trim().split(" ");
   const errorElement = document.getElementById("fullnameError");
 
-  if (names.length !== 2) {
+  if (names.length != 2) {
     errorElement.textContent = "Please enter both your Firstname and Lastname.";
     return false;
   } else {
@@ -59,7 +59,7 @@ function validateFormOnInput() {
 // Function to fetch activity types from the backend
 async function fetchActivityTypes() {
   try {
-    const response = await fetch(`http://${window.location.hostname}:${port}/getActivityType`);
+    const response = await fetch(`http://${window.location.hostname}:${port}/getActivityTypes`);
     if (response.ok) {
       const data = await response.json();
       return data;
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // Function to submit the form
-async function submitForm(event) {
+function submitForm(event) {
   event.preventDefault();
 
   // Validate form inputs before submission
@@ -151,7 +151,6 @@ async function submitForm(event) {
       // Display success message with formatted data
       alert(responseData.message + "\n" + formattedData);
 
-      document.getElementById("myForm").reset();
     } else {
       console.error("Failed to submit form data.");
 
@@ -185,7 +184,7 @@ document.getElementById('resetButton').addEventListener('click', function () {
 //submit
 document.addEventListener('DOMContentLoaded', function () {
 const form = document.getElementById('myForm');
-form.addEventListener('Submit', function (e) {
+form.addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent the default form submission
 
     // Fetch all the form data
