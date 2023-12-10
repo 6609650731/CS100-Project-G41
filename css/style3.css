@@ -100,10 +100,12 @@ button
 {
 	color: #fff;
 	filter: drop-shadow(10px 5px 5px #fff);
+	font-size: 10px;
 }
 
 #confirmationMessage button
 {
+	font-size: 12px;
 	cursor: pointer;
 	background-color: black;
 	color: white;
