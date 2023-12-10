@@ -1,4 +1,4 @@
-    // Function to validate Firstname and Lastname
+// Function to validate Firstname and Lastname
 function validateName() {
   const nameInput = document.getElementById("name");
   const names = nameInput.value.trim().split(" ");
@@ -44,6 +44,40 @@ function validateEmail() {
   return true;
 }
 
+function validatework() {
+  const workInput = document.getElementById("work");
+  const title = workInput.value.trim();
+  const errorElement = document.getElementById("workError");
+
+  if (!title || title[0] !== title[0].toUpperCase()) {
+    errorElement.textContent = "Please enter your first letter with Uppercase.";
+    return false;
+  } else {
+    errorElement.textContent = ""; // Clear the error message when valid
+  }
+  return true;
+}
+
+function validatelocation(){
+  const locationInput = document.getElementById("location");
+  const locationcheck = locationInput.value.trim();
+  const errorElement = document.getElementById("locationError");
+
+  if (!locationcheck || !locationcheck.includes(",")) {
+    errorElement.textContent = "Please enter a location in the format 'location,province'";
+    return false;
+  } else {
+    errorElement.textContent = ""; // Clear the error message when valid
+  }
+  return true;
+}
+
+function resetForm() {
+  form.reset(); // Assuming form is the reference to your form element
+  displayDiv.innerHTML = ""; // Clear the displayed data
+  document.getElementById("confirmationMessage").style.display = "none";
+}
+
     // JavaScript เพื่อจัดการการส่งฟอร์มและแสดงข้อมูล
     const form = document.getElementById('myForm');
     const displayDiv = document.getElementById('displayData');
@@ -54,10 +88,17 @@ function validateEmail() {
     // แสดงข้อมูลทั้งหมด
     displayData();
 
-    form.addEventListener('submit', function(event) 
-    {
-      event.preventDefault(); // ป้องกันการโหลดหน้าใหม่เมื่อกด submit
+    form.addEventListener('submit', function(event){
+      event.preventDefault();// ป้องกันการโหลดหน้าใหม่เมื่อกด submit
 
+      const isNameValid = validateName;
+      const isStudentIDValid = validateStudentID;
+      const isEmailValid = validateEmail;
+      const isworktitleValid = validatework;
+      const islocationValid = validatelocation;
+
+  // ตรวจสอบว่าข้อมูลถูกต้องทั้งหมดหรือไม่
+  if (isNameValid() && isStudentIDValid() && isEmailValid() && isworktitleValid() && islocationValid()) {
       // ดึงค่าจากฟอร์ม
       const name = document.getElementById('name').value;
       const std = document.getElementById('std').value;
@@ -79,7 +120,10 @@ function validateEmail() {
       localStorage.setItem('allFormData', JSON.stringify(allData));
 
       // แสดงข้อมูลทั้งหมด
+      document.getElementById("confirmationMessage").style.display = "block";
       displayData();
+      displayData();
+    }
     });
 
     // จัดการกรณีรีเฟรชหน้า
