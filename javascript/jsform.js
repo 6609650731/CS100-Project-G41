@@ -4,7 +4,7 @@ function validateName() {
   const names = nameInput.value.trim().split(" ");
   const errorElement = document.getElementById("nameError");
 
-  if (names.length != 2) {
+  if (names.length !== 2) {
     errorElement.textContent = "Please enter both your Firstname and Lastname.";
     return false;
   } else {
@@ -44,171 +44,110 @@ function validateEmail() {
   return true;
 }
 
-// Function to validate form inputs on user input
-function validateFormOnInput() {
-  validateName();
-  validateStudentID();
-  validateEmail();
+function validatework() {
+  const workInput = document.getElementById("work");
+  const title = workInput.value.trim();
+  const errorElement = document.getElementById("workError");
+
+  if (!title || title[0] !== title[0].toUpperCase()) {
+    errorElement.textContent = "Please enter your first letter with Uppercase.";
+    return false;
+  } else {
+    errorElement.textContent = ""; // Clear the error message when valid
+  }
+  return true;
 }
 
-// Function to fetch activity types from the backend
-async function fetchActivityTypes() {
-  try {
-    const response = await fetch(`http://${window.location.hostname}:${port}/getActivityType`);
-    if (response.ok) {
-      const data = await response.json();
-      return data;
-    } else {
-      console.error("Failed to fetch activity types.");
-      return [];
+function validatelocation(){
+  const locationInput = document.getElementById("location");
+  const locationcheck = locationInput.value.trim();
+  const errorElement = document.getElementById("locationError");
+
+  if (!locationcheck || !locationcheck.includes(",")) {
+    errorElement.textContent = "Please enter a location in the format 'location,province'";
+    return false;
+  } else {
+    errorElement.textContent = ""; // Clear the error message when valid
+  }
+  return true;
+}
+
+function resetForm() {
+  form.reset(); // Assuming form is the reference to your form element
+  displayDiv.innerHTML = ""; // Clear the displayed data
+  document.getElementById("confirmationMessage").style.display = "none";
+}
+
+    // JavaScript เพื่อจัดการการส่งฟอร์มและแสดงข้อมูล
+    const form = document.getElementById('myForm');
+    const displayDiv = document.getElementById('displayData');
+
+    // ดึงข้อมูลทั้งหมดจาก localStorage
+    let allData = JSON.parse(localStorage.getItem('allFormData')) || [];
+
+    // แสดงข้อมูลทั้งหมด
+    displayData();
+
+    form.addEventListener('submit', function(event){
+      event.preventDefault();// ป้องกันการโหลดหน้าใหม่เมื่อกด submit
+
+      const isNameValid = validateName;
+      const isStudentIDValid = validateStudentID;
+      const isEmailValid = validateEmail;
+      const isworktitleValid = validatework;
+      const islocationValid = validatelocation;
+
+  // ตรวจสอบว่าข้อมูลถูกต้องทั้งหมดหรือไม่
+  if (isNameValid() && isStudentIDValid() && isEmailValid() && isworktitleValid() && islocationValid()) {
+      // ดึงค่าจากฟอร์ม
+      const name = document.getElementById('name').value;
+      const std = document.getElementById('std').value;
+      const email = document.getElementById('email').value;
+      const work = document.getElementById('work').value;
+      const activity = document.getElementById('activity').value;
+      const academic = document.getElementById('academic').value;
+      const semester = document.getElementById('semester').value;
+      const sd = document.getElementById('sd').value;
+      const ed = document.getElementById('ed').value;
+      const location = document.getElementById('location').value;
+      const description = document.getElementById('description').value;
+
+      // บันทึกข้อมูลลงในอาร์เรย์
+      const formData = { name, std, email, work, activity, academic, semester, sd, ed, location, description };
+      allData.push(formData);
+
+      // บันทึกข้อมูลทั้งหมดลงใน localStorage
+      localStorage.setItem('allFormData', JSON.stringify(allData));
+
+      // แสดงข้อมูลทั้งหมด
+      document.getElementById("confirmationMessage").style.display = "block";
+      displayData();
     }
-  } catch (error) {
-    console.error("An error occurred while fetching activity types:", error);
-    return [];
-  }
-}
-
-// Function to populate activity types in the select element
-function populateActivityTypes(activityTypes) {
-  const activityTypeSelect = document.getElementById("activityType");
-
-  for (const type of activityTypes) {
-    const option = document.createElement("option");
-    option.value = type.id;
-    option.textContent = type.value;
-    activityTypeSelect.appendChild(option);
-  }
-}
-
-// Event listener when the page content has finished loading
-document.addEventListener("DOMContentLoaded", async () => {
-  const activityTypes = await fetchActivityTypes();
-  populateActivityTypes(activityTypes);
-});
-
-// Function to submit the form
-async function submitForm(event) {
-  event.preventDefault();
-
-  // Validate form inputs before submission
-  if (!validateName() || !validateStudentID() || !validateEmail()) {
-    return;
-  }
-
-  const startDateInput = document.getElementById("startDate").value;
-  const endDateInput = document.getElementById("endDate").value;
-  const startDate = new Date(startDateInput);
-  const endDate = new Date(endDateInput);
-
-  if (endDate <= startDate) {
-    alert("End datetime should be after the start datetime.");
-    return;
-  }
-
-  // Create the data object to send to the backend
-  const formData = new FormData(event.target);
-  const data = {
-    first_name: formData.get("fullname").split(" ")[0],
-    last_name: formData.get("fullname").split(" ")[1],
-    student_id: parseInt(formData.get("studentID")),
-    email: formData.get("email"),
-    title: formData.get("workTitle"),
-    type_of_work_id: parseInt(formData.get("activityType")),
-    academic_year: parseInt(formData.get("academicYear")) - 543,
-    semester: parseInt(formData.get("semester")),
-    start_date: formData.get("startDate"),
-    end_date: formData.get("endDate"),
-    location: formData.get("location"),
-    description: formData.get("description")
-  };
-
-  console.log(data);
-
-  try {
-    // Send data to the backend using POST request
-    const response = await fetch(`http://${window.location.hostname}:${port}/record`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
     });
 
-    if (response.ok) {
-      const responseData = await response.json();
-      console.log("Form data submitted successfully!");
-
-      // Format JSON data for display
-      const formattedData = Object.entries(responseData.data)
-        .map(([key, value]) => `"${key}": "${value}"`)
-        .join("\n");
-
-      // Display success message with formatted data
-      alert(responseData.message + "\n" + formattedData);
-
-      document.getElementById("myForm").reset();
-    } else {
-      console.error("Failed to submit form data.");
-
-      // Display error message
-      alert("Failed to submit form data. Please try again.");
-    }
-  } catch (error) {
-    console.error("An error occurred while submitting form data:", error);
-  }
-}
-
-// Event listener for form submission
-document.getElementById("myForm").addEventListener("submit", submitForm);
-
-// Event listeners for input validation on user input
-document.getElementById("fullname").addEventListener("input", validateName);
-document
-  .getElementById("studentID")
-  .addEventListener("input", validateStudentID);
-document.getElementById("email").addEventListener("input", validateEmail);
-
-// Event listener for location input validation on user input
-document.getElementById("location").addEventListener("input", validateLocation);
-document.addEventListener('DOMContentLoaded', function () {
-document.getElementById('resetButton').addEventListener('click', function () {
-    document.getElementById('myForm').reset();
-});
-
-});
-
-//submit
-document.addEventListener('DOMContentLoaded', function () {
-const form = document.getElementById('myForm');
-form.addEventListener('Submit', function (e) {
-    e.preventDefault(); // Prevent the default form submission
-
-    // Fetch all the form data
-    const formData = new FormData(form);
-    const values = {};
-    for (const [key, value] of formData.entries()) {
-        values[key] = value;
-    }
-
-    // Display the values
-    displayValues(values, 'custom-output');
+    // จัดการกรณีรีเฟรชหน้า
+    window.addEventListener('beforeunload', function() {
+      // ล้างข้อมูลที่ถูกบันทึกเมื่อรีเฟรช
+      localStorage.removeItem('allFormData');
     });
-    function displayValues(data) {
-      const container = document.createElement('div');
-      container.className = 'custom-output';
-  
-      const heading = document.createElement('h2');
-      heading.textContent = '˙ᘧ ͜ ˙ ♡ This is my activity ˙ᘧ ͜ ˙ ♡';
-      heading.className = 'activity-heading';
-      container.appendChild(heading);
-  
-      for (const key in data) {
-          const p = document.createElement('p');
-          p.textContent = `${key}: ${data[key]}`;
-          container.appendChild(p);
-      }
 
-      const formContainer = document.querySelector('.form-container');
-      formContainer.appendChild(container);
-  }
-})
+    function displayData() {
+      // แสดงข้อมูลทั้งหมด
+      displayDiv.innerHTML = '<p></p>';
+
+      allData.forEach((data) => {
+        displayDiv.innerHTML += `
+          <p>Name: ${data.name}</p>
+          <p>StudentID: ${data.std}</p>
+          <p>Email: ${data.email}</p>
+          <p>Work: ${data.work}</p>
+          <p>Activity: ${data.activity}</p>
+          <p>Academic: ${data.academic}</p>
+          <p>Semester: ${data.semester}</p>
+          <p>Start Date: ${data.sd}</p>
+          <p>End Date: ${data.ed}</p>
+          <p>Location: ${data.location}</p>
+          <p>Description: ${data.description}</p>
+        `;
+      });
+    }
