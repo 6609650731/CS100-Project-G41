@@ -77,15 +77,42 @@ button
 #displayData
 {
 	margin-top: auto;
-	text-align: left;
-
+	text-align: center;
 }
+
+#displayData h2
+{
+	color: white;
+	text-align: center;
+	font-size: 16px;
+}
+
 #displayData p
 {
-	display: block;
+	display: inline-table;
 	margin-bottom: auto;
 	color: white;
-	filter: drop-shadow(10px 5px 5px rgb(255, 255, 255))
+	filter: drop-shadow(10px 5px 5px rgb(255, 255, 255));
+	border: 1px solid #fff;
+}
+
+#confirmationMessage
+{
+	color: #fff;
+	filter: drop-shadow(10px 5px 5px #fff);
+}
+
+#confirmationMessage button
+{
+	cursor: pointer;
+	background-color: black;
+	color: white;
+}
+
+#confirmationMessage button:hover
+{
+	background-color: white;
+	color: black;
 }
 
 .error 
