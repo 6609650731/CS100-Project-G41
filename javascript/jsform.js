@@ -122,7 +122,6 @@ function resetForm() {
       // แสดงข้อมูลทั้งหมด
       document.getElementById("confirmationMessage").style.display = "block";
       displayData();
-      displayData();
     }
     });
 
