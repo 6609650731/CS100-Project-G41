@@ -1,13 +1,8 @@
-const config = {
-  backendUrl: "http://localhost:8000/", // Default backend URL
-};
-const port = 8000;
-
 // Function to validate Firstname and Lastname
 function validateName() {
-  const fullnameInput = document.getElementById("fullname");
-  const names = fullnameInput.value.trim().split(" ");
-  const errorElement = document.getElementById("fullnameError");
+  const nameInput = document.getElementById("name");
+  const names = nameInput.value.trim().split(" ");
+  const errorElement = document.getElementById("nameError");
 
   if (names.length != 2) {
     errorElement.textContent = "Please enter both your Firstname and Lastname.";
@@ -20,11 +15,11 @@ function validateName() {
 
 // Function to validate Student ID
 function validateStudentID() {
-  const studentIDInput = document.getElementById("studentID");
-  const studentIDPattern = /^\d{10}$/;
-  const errorElement = document.getElementById("studentIDError");
+  const stdInput = document.getElementById("std");
+  const stdPattern = /^\d{10}$/;
+  const errorElement = document.getElementById("stdError");
 
-  if (!studentIDPattern.test(studentIDInput.value)) {
+  if (!stdPattern.test(stdInput.value)) {
     errorElement.textContent = "Please enter a 10-digit Student ID.";
     return false;
   } else {
@@ -59,7 +54,7 @@ function validateFormOnInput() {
 // Function to fetch activity types from the backend
 async function fetchActivityTypes() {
   try {
-    const response = await fetch(`http://${window.location.hostname}:${port}/getActivityTypes`);
+    const response = await fetch(`http://${window.location.hostname}:${port}/getActivityType`);
     if (response.ok) {
       const data = await response.json();
       return data;
@@ -92,7 +87,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // Function to submit the form
-function submitForm(event) {
+async function submitForm(event) {
   event.preventDefault();
 
   // Validate form inputs before submission
@@ -151,6 +146,7 @@ function submitForm(event) {
       // Display success message with formatted data
       alert(responseData.message + "\n" + formattedData);
 
+      document.getElementById("myForm").reset();
     } else {
       console.error("Failed to submit form data.");
 
@@ -184,7 +180,7 @@ document.getElementById('resetButton').addEventListener('click', function () {
 //submit
 document.addEventListener('DOMContentLoaded', function () {
 const form = document.getElementById('myForm');
-form.addEventListener('submit', function (e) {
+form.addEventListener('Submit', function (e) {
     e.preventDefault(); // Prevent the default form submission
 
     // Fetch all the form data

@@ -10,21 +10,22 @@
 <body>
 	
 	<div class="form-container">
+	<br>
 	  <h1>Our Activity</h1>
 
 	  <form id="myForm" action="#" method="post">
 		<div class="form-group">
-		  <label for="fullname">Firstname and Lastname</label>
-		  <input type="text" id="fullname" name="fullname" />
+		  <label for="name">Firstname and Lastname</label>
+		  <input type="text" id="name" name="name" />
 		  <small>Only enter your first name and last name, middle name is not necessary.</small>
-		  <span id="fullnameError" class="error"></span>
+		  <span id="nameError" class="error"></span>
 		</div>
 		
 		<div class="form-group">
-		  <label for="studentID">Student ID</label>
-		  <input type="text" id="studentID" name="studentID" />
+		  <label for="std">Student ID</label>
+		  <input type="text" id="std" name="std" />
 		  <small>Please enter your 10-digit student ID.</small>
-		  <span id="studentIDError" class="error"></span>
+		  <span id="stdError" class="error"></span>
 		</div>
 		
 		<div class="form-group">
@@ -35,13 +36,15 @@
 		</div>
   
 		<div class="form-group">
-		  <label for="workTitle">Work/Activity Title</label>
-		  <input type="text" id="workTitle" name="workTitle" />
+		  <label for="work">Work/Activity Title</label>
+		  <input type="text" id="work" name="work" />
+		  <span id="workError" class="error"></span>
+		  <small>Please enter your first letter with Uppercase".</small>
 		</div>
   
 		<div class="form-group">
-		  <label for="activityType">Type of Work/Activity</label>
-		  <select id="activityType" name="activityType">
+		  <label for="activity">Type of Work/Activity</label>
+		  <select id="activity" name="activity">
 			<option value="" disabled selected>Select an option</option>
 			<option value="Course">Course</option>
 			<option value="Activity">Activity</option>
@@ -54,8 +57,8 @@
 		</div>
   
 		<div class="form-group">
-		  <label for="academicYear">Academic Year</label>
-		  <select id="academicYear" name="academicYear">
+		  <label for="academic">Academic Year</label>
+		  <select id="academic" name="academic">
 			<option value="" disabled selected>Select an option</option>
 			<option value="2561">2561</option>
 			<option value="2562">2562</option>
@@ -80,18 +83,20 @@
 		</div>
   
 		<div class="form-group">
-		  <label for="startDate">Start Date/Time</label>
-		  <input type="datetime-local" id="startDate" name="startDate" />
+		  <label for="sd">Start Date/Time</label>
+		  <input type="datetime-local" id="sd" name="sd" />
 		</div>
 
 		<div class="form-group">
-		  <label for="endDate">End Date/Time</label>
-		  <input type="datetime-local" id="endDate" name="endDate" />
+		  <label for="ed">End Date/Time</label>
+		  <input type="datetime-local" id="ed" name="ed" />
 		</div>
   
 		<div class="form-group">
 		  <label for="location">Location</label>
 		  <input type="text" id="location" name="location" />
+		  <span id="locationError" class="error"></span>
+		  <small>Plaese enter your location in the format "xxx,yy-location,province".</small>
 		</div>
   
 		<div class="form-group">
@@ -103,9 +108,14 @@
 		  <input type="submit" value="Submit" />
 		</div>
 	  </form>
+
+	  <div id="displayData"></div>
+
+	  <div id="confirmationMessage" style="display: none;">
+		<p>Your form has been submitted. Do you want to submit another form?</p>
+		<button onclick="resetForm()">Submit Another Form</button>
+	  </div>
 	</div>
-  
-	<script src="../javascript/jsform.js"></script>
-  </body>
-  </html>
-  
+	<script class="decorate" src="../javascript/jsform.js"></script>
+</body>
+</html>
