@@ -135,19 +135,32 @@ function resetForm() {
       // แสดงข้อมูลทั้งหมด
       displayDiv.innerHTML = '<p></p>';
 
-      allData.forEach((data) => {
+      allData.forEach((data , index) => {
         displayDiv.innerHTML += `
-          <p>Name: ${data.name}</p>
-          <p>StudentID: ${data.std}</p>
-          <p>Email: ${data.email}</p>
-          <p>Work: ${data.work}</p>
-          <p>Activity: ${data.activity}</p>
-          <p>Academic: ${data.academic}</p>
-          <p>Semester: ${data.semester}</p>
-          <p>Start Date: ${data.sd}</p>
-          <p>End Date: ${data.ed}</p>
-          <p>Location: ${data.location}</p>
-          <p>Description: ${data.description}</p>
+          <br>
+          <h2>Our Activity ; ${index + 1}</h2>
+          <br>
+          <p>Name: ${data.name}
+          <br>
+          <br>StudentID: ${data.std}
+          <br>
+          <br>Email: ${data.email}
+          <br>
+          <br>Work: ${data.work}
+          <br>
+          <br>Activity: ${data.activity}
+          <br>
+          <br>Academic: ${data.academic}
+          <br>
+          <br>Semester: ${data.semester}
+          <br>
+          <br>Start Date: ${data.sd}
+          <br>
+          <br>End Date: ${data.ed}
+          <br>
+          <br>Location: ${data.location}
+          <br>
+          <br>Description: ${data.description}</p>
         `;
       });
     }
