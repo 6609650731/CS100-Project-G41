@@ -21,7 +21,7 @@ form
 	max-width: 500px;
 	margin: 50px auto;
 	padding: 30px 20px;
-	border-radius: 0.25rem;
+	border-radius: 0.50rem;
 	filter:drop-shadow(10px 5px 5px #fff);
 }
 
@@ -48,15 +48,13 @@ small
 .form-group textarea 
 {
 	border: 1px solid #777;
-	border-radius: 0.25rem;
+	border-radius: 0.50rem;
 	font-family: inherit;
 	padding: 10px;
 	display: block;
 	width: 95%;
 }
 
-/* Styling form-control Radio 
-button and Checkbox */
 .form-container input[type="radio"],
 .form-container input[type="checkbox"] 
 {
@@ -67,13 +65,27 @@ button and Checkbox */
 button 
 {
 	border: 1px solid rgb(208, 208, 208);
-	border-radius: 0.25rem;
+	border-radius: 0.50rem;
 	font-family: inherit;
 	font-size: 21px;
 	display: block;
 	width: 100%;
 	margin-top: 50px;
 	margin-bottom: 20px;
+}
+
+#displayData
+{
+	margin-top: auto;
+	text-align: left;
+
+}
+#displayData p
+{
+	display: block;
+	margin-bottom: auto;
+	color: white;
+	filter: drop-shadow(10px 5px 5px rgb(255, 255, 255))
 }
 
 .error 
